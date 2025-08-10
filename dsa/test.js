@@ -1,5 +1,13 @@
-const map = new Map();
-const result = map.set("banana", "amarela").set("maçã", "vermelha");
 
-console.log(result); // Map(1) { 'banana' => 'amarela' }
-console.log(result === map); // true (mesmo objeto)
+
+// function teste (arr) {
+//   const ordered = arr.sort((a, b) => b - a);
+
+//   const result = [ordered[1], ordered[0]];
+
+//   return result;
+// }
+
+// console.log(teste([3, 7, 5, 6, 2]));
+
+///////////////////////////////////////////////////////////////
