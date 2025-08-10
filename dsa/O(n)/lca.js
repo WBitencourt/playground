@@ -66,6 +66,26 @@ function lca(root, v1, v2) {
   return root;
 }
 
+function lcaBinaryTree(root, v1, v2) {
+  let found1 = false, found2 = false;
+
+  function dfs(node) {
+    if (!node) return null;
+
+    const left = dfs(node.left);
+    const right = dfs(node.right);
+
+    if (node.data === v1) { found1 = true; return node; }
+    if (node.data === v2) { found2 = true; return node; }
+
+    if (left && right) return node;        // v1 e v2 em lados diferentes
+    return left ?? right;                  // propaga quem achou (ou null)
+  }
+
+  const lca = dfs(root);
+  return (found1 && found2) ? lca : null;  // garante que ambos existem
+}
+
 // 1) Ambos menores → esquerda (v1=1, v2=3)
 // root = 4
 
