@@ -1,20 +1,7 @@
 import { postgresPool } from "../lib/db-postgres";
-import { IBookingLegadoRepository, IBookingLegado } from "./booking-legado-repository";
+import { IBookingLegado, IPostgreSQLBookingLegadoRepository } from "./booking-legado-repository";
 
-export class PostgreSQLBookingLegadoRepository implements IBookingLegadoRepository {
-  public async read(): Promise<IBookingLegado[]> {
-    try {
-      const query = 'SELECT * FROM CLIENTE.BOOKING_LEGADOS';
-      const response = await postgresPool.query(query);
-      
-      return response.rows as IBookingLegado[];
-    } catch (error) {
-      console.error("Erro ao escanear a tabela:", error);
-
-      throw new Error(`Falha ao buscar dados da Booking legado`);
-    }
-  }
-
+export class PostgreSQLBookingLegadoRepository implements IPostgreSQLBookingLegadoRepository {
   public async create(bookingLegado: IBookingLegado): Promise<void> {
     try {
       const query = [

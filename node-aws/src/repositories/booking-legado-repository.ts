@@ -9,8 +9,13 @@ export interface IBookingLegado {
   payloadOriginal: string;
 }
 
-export interface IBookingLegadoRepository {
+export interface IDynamoDBBookingLegadoRepository {
   read: () => Promise<IBookingLegado[]>;
+  getPageKey: () => Record<string, any> | undefined;
+  setPageKey: (pageKey: Record<string, any> | undefined) => void;
+}
+
+export interface IPostgreSQLBookingLegadoRepository {
   create: (bookingLegado: IBookingLegado) => Promise<void>;
   createMany: (batch: IBookingLegado[]) => Promise<void>;
 }

@@ -11,11 +11,19 @@ async function main() {
     destinationRepository: bookingLegadoPostgreSQLRepository
   });
 
-  console.log('Iniciando migração de Booking legado: ' + new Date().toISOString());
+  const startTime = new Date();
+
+  console.log('Migração iniciada em: ' + startTime.toISOString());
 
   await bookingMigrationUseCase.execute();
 
-  console.log('Migração de Booking legado finalizada: ' + new Date().toISOString());
+  const endTime = new Date();
+
+  console.log('--------------------------------');
+  console.log('Migração iniciada em: ' + startTime.toISOString());
+  console.log('Migração finalizada em: ' + endTime.toISOString());
+  console.log('Tempo de execução: ' + (endTime.getTime() - startTime.getTime()) + 'ms');
+  console.log('--------------------------------');
 }
 
 main();
